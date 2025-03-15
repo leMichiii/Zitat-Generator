@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zitat Generator × leMichiii</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+        #quote-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            max-width: 500px;
+        }
+        #quote {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #author {
+            font-size: 16px;
+            color: gray;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background: #007BFF;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div id="quote-box">
+    <p id="quote">Klicke auf den Button, um ein Zitat zu sehen.</p>
+    <p id="author"></p>
+    <button onclick="generateQuote()">Neues Zitat</button>
+</div>
+
+<script>
+    const quotes = [
+        { text: "Der Weg ist das Ziel.", author: "Konfuzius" },
+        { text: "Gib jedem Tag die Chance, der schönste deines Lebens zu werden.", author: "Mark Twain" },
+        { text: "Nur wer sein Ziel kennt, findet den Weg.", author: "Laotse" },
+        { text: "Erfolg hat drei Buchstaben: TUN.", author: "Johann Wolfgang von Goethe" },
+        { text: "Das Geheimnis des Erfolgs ist anzufangen.", author: "Mark Twain" },
+        { text: "Der einzige Weg, großartige Arbeit zu leisten, ist, zu lieben, was man tut.", author: "Steve Jobs" },
+        { text: "Das Leben beginnt am Ende deiner Komfortzone.", author: "Neale Donald Walsch" },
+        { text: "Wer kämpft, kann verlieren. Wer nicht kämpft, hat schon verloren.", author: "Bertolt Brecht" },
+        { text: "Die einzige Grenze ist die, die du dir selbst setzt.", author: "Unbekannt" },
+        { text: "Alles, was du dir vorstellen kannst, ist real.", author: "Pablo Picasso" },
+        { text: "Ein Ziel ist ein Traum mit einer Frist.", author: "Napoleon Hill" },
+        { text: "Sei du selbst die Veränderung, die du dir wünschst für diese Welt.", author: "Mahatma Gandhi" },
+        { text: "Die Zukunft gehört denen, die an die Schönheit ihrer Träume glauben.", author: "Eleanor Roosevelt" },
+        { text: "Erfolg besteht darin, von Misserfolg zu Misserfolg zu gehen, ohne die Begeisterung zu verlieren.", author: "Winston Churchill" },
+        { text: "Träume nicht dein Leben, sondern lebe deinen Traum.", author: "Tommaso Campanella" },
+        { text: "Geduld ist die Kunst, nur langsam wütend zu werden.", author: "Japanisches Sprichwort" },
+        { text: "Es gibt nur eine Zeit, in der es wesentlich ist aufzuwachen. Diese Zeit ist jetzt.", author: "Buddha" },
+        { text: "Mut steht am Anfang des Handelns, Glück am Ende.", author: "Demokrit" },
+        { text: "Ein kluger Mann macht nicht alle Fehler selbst. Er gibt auch anderen eine Chance.", author: "Winston Churchill" },
+        { text: "Hindernisse sind diese furchterregenden Dinge, die du siehst, wenn du dein Ziel aus den Augen verlierst.", author: "Henry Ford" },
+        { text: "Wer aufhört, besser zu werden, hat aufgehört, gut zu sein.", author: "Philip Rosenthal" },
+        { text: "Es gibt kein Versagen, nur Feedback.", author: "Robert Allen" },
+        { text: "Ein Tag ohne Lächeln ist ein verlorener Tag.", author: "Charlie Chaplin" },
+        { text: "Das Leben ist zu kurz für irgendwann.", author: "Unbekannt" },
+        { text: "Nichts ist unmöglich, die Grenzen existieren nur in unseren Köpfen.", author: "Unbekannt" },
+        { text: "Wenn du etwas wirklich willst, findest du einen Weg. Wenn nicht, findest du eine Ausrede.", author: "Jim Rohn" },
+        { text: "Gib niemals auf, denn genau dann, wenn du aufgeben willst, passiert das Wunder.", author: "Unbekannt" },
+        { text: "Der einzige Mensch, der dich wirklich aufhalten kann, bist du selbst.", author: "Unbekannt" },
+        { text: "Wenn du schnell gehen willst, geh allein. Wenn du weit gehen willst, geh mit anderen.", author: "Afrikanisches Sprichwort" },
+        { text: "Fang jetzt an! Tu es einfach!", author: "Nike" },
+        { text: "Wer wagt, gewinnt.", author: "Sprichwort" },
+        { text: "Du kannst nicht verlieren, wenn du nicht aufgibst.", author: "Unbekannt" },
+        { text: "Man kann nicht zurückgehen und den Anfang ändern, aber man kann starten, wo man ist, und das Ende verändern.", author: "C.S. Lewis" },
+        { text: "Das Glück deines Lebens hängt von der Beschaffenheit deiner Gedanken ab.", author: "Marc Aurel" },
+        { text: "Gute Taten müssen nicht groß sein – nur echt.", author: "Unbekannt" },
+        { text: "Nur wer seinen eigenen Weg geht, kann von niemandem überholt werden.", author: "Marlon Brando" },
+        { text: "Nicht weil es schwer ist, wagen wir es nicht, sondern weil wir es nicht wagen, ist es schwer.", author: "Seneca" },
+        { text: "Jeder Tag ist eine neue Chance, das zu tun, was du möchtest.", author: "Friedrich Nietzsche" },
+        { text: "Hör auf, darauf zu warten, dass Dinge passieren. Geh raus und mach sie möglich.", author: "Unbekannt" },
+        { text: "Veränderung beginnt mit dem ersten Schritt.", author: "Unbekannt" }
+    ];
+
+    function generateQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById("quote").innerText = quotes[randomIndex].text;
+        document.getElementById("author").innerText = quotes[randomIndex].author ? `- ${quotes[randomIndex].author}` : "";
+    }
+</script>
+
+</body>
+</html>
