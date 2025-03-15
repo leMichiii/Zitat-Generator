@@ -1,0 +1,19 @@
+[33mcommit 65fdfca8af36d1704c70663fdd5a5c6cd10fb563[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+[36mgpg: Signature made Sat Mar 15 19:46:38 2025 WEST[m
+[36mgpg:                using RSA key 1DB0D678F907B0E524FDDC35D3BC61DDB1DD7F18[m
+[36mgpg: Good signature from "Michael Mawick (GPG Key) <michaeljens09@gmail.com>" [ultimate][m
+Author: leMichiii <michaeljens09@gmail.com>
+Date:   Sat Mar 15 19:44:50 2025 +0100
+
+    now signed
+
+[33mcommit 270bf863ff4159f8b95970955b86f2112533f606[m
+[41mgpg: Signature made Sat Mar 15 19:00:43 2025 WEST[m
+[41mgpg:                using RSA key B5690EEEBB952194[m
+[41mgpg: Can't check signature: No public key[m
+Author: leMichiii <168669087+leMichiii@users.noreply.github.com>
+Date:   Sat Mar 15 19:00:42 2025 +0100
+
+    Create LICENSE
+
+[33mcommit 2a6e425f290a318be5c2bd06f86b557167e000ec[m
